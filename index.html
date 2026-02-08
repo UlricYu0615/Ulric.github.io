@@ -37,15 +37,11 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            object-fit: cover; /* 确保图片不会被拉伸变形 */
             margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            font-weight: bold;
+            display: block; /* 改为 block 居中 */
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+            border: 3px solid white; /* 给头像加个白边更好看 */
         }
         h1 { margin: 0; font-size: 1.8rem; letter-spacing: -0.5px; }
         p { color: #636e72; line-height: 1.6; margin: 1rem 0 2rem; }
@@ -70,7 +66,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="avatar">U</div>
+        <img src="Shopee-Sg300x250.png" class="avatar" alt="Ulric的头像">
         <h1>Ulric</h1>
         <p>🚀 终身学习者 / 开发者 / 创意探索者<br>正在通过代码构建我的数字花园。</p>
         <div class="social-links">
