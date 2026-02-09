@@ -95,11 +95,11 @@
         .track img {
             height: 40px; 
             width: auto;
-            filter: grayscale(100%) opacity(0.5); 
+            filter: none; 
             transition: 0.3s;
             padding: 0 40px; 
         }
-        .track img:hover { filter: grayscale(0%) opacity(1); }
+        .track img:hover { opacity: 1; transform: scale(1.05); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Sections Styling */
@@ -147,7 +147,7 @@
 <div class="page-wrapper" id="home">
     <nav>
         <div class="logo-container">
-            <img src="assets/logo.png" alt="Funjoy Logo" class="logo-img">
+            <img src="assets/funjoy.png" alt="Funjoy Logo" class="logo-img">
             <span class="logo-divider">Unleash Growth</span>
         </div>
         <div class="nav-links">
