@@ -34,13 +34,26 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 30px 0; margin: 0 auto;
         }
-        .logo { font-weight: 800; font-size: 26px; letter-spacing: -1px; }
-        .logo span { color: var(--text-gray); font-weight: 400; font-size: 14px; margin-left: 10px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px; }
+
+        /* Logo 样式优化：反色处理让黑色 Logo 变白 */
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { 
+            height: 35px; 
+            width: auto; 
+            filter: invert(1); /* 关键：将黑色图标转为白色以适应深色背景 */
+        }
+        .logo-divider { 
+            color: var(--text-gray); 
+            font-size: 14px; 
+            border-left: 1px solid rgba(255,255,255,0.2); 
+            padding-left: 12px;
+            font-weight: 400;
+        }
 
         .nav-links { display: flex; gap: 35px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-gray); font-size: 14px; transition: 0.3s; font-weight: 500; }
         .nav-links a:hover { color: var(--text-light); }
-        .btn-nav { background: var(--accent-blue); padding: 10px 24px; border-radius: 30px; color: #fff !important; font-weight: 600; }
+        .btn-nav { background: var(--accent-blue); padding: 10px 24px; border-radius: 30px; color: #fff !important; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); }
 
         .hero {
             display: flex; align-items: center; justify-content: space-between;
@@ -60,18 +73,18 @@
         }
         @keyframes rotateEarth { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Performance Metrics (Media Kit Data) */
+        /* Performance Metrics */
         .stats-grid {
             display: grid; grid-template-columns: repeat(4, 1fr);
-            max-width: 1200px; margin: -20px auto 100px; gap: 20px; padding: 0 5%;
+            max-width: 1200px; margin: 20px auto 100px; gap: 20px; padding: 0 5%;
         }
         .stat-card {
             background: var(--glass-bg); backdrop-filter: blur(15px);
-            padding: 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 30px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1);
             text-align: center; transition: 0.3s;
         }
-        .stat-card h2 { font-size: 2.8rem; margin: 0; color: var(--accent-blue); font-weight: 800; }
-        .stat-card p { color: var(--text-gray); margin: 10px 0 0; font-size: 0.95rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-card h2 { font-size: 2.5rem; margin: 0; color: var(--accent-blue); font-weight: 800; }
+        .stat-card p { color: var(--text-gray); margin: 10px 0 0; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
 
         /* Partner Carousel */
         .carousel {
@@ -80,19 +93,16 @@
         }
         .track { display: flex; gap: 120px; animation: scroll 35s linear infinite; width: max-content; }
         .track img {
-            height: 45px; /* 根据你的图标实际效果调整高度 */
+            height: 40px; 
             width: auto;
-            filter: grayscale(100%) opacity(0.6); /* 推荐：统一成灰色半透明，悬停变色，非常高级 */
+            filter: grayscale(100%) opacity(0.5); 
             transition: 0.3s;
-            padding: 0 40px; /* 增加图标之间的间距 */
+            padding: 0 40px; 
         }
-
-        .track img:hover {
-            filter: grayscale(0%) opacity(1); /* 鼠标移上去恢复彩色 */
-        }
+        .track img:hover { filter: grayscale(0%) opacity(1); }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Media Ecosystem Section */
+        /* Sections Styling */
         .section-title { text-align: center; margin: 120px 0 60px; font-size: 3rem; font-weight: 800; letter-spacing: -1px; }
         .ecosystem-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 1200px; margin: 0 auto; gap: 40px; padding: 0 5%; }
         .eco-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 28px; padding: 45px; }
@@ -100,7 +110,6 @@
         .eco-list { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 25px; }
         .eco-tag { background: rgba(255, 255, 255, 0.05); padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; color: var(--text-gray); border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 500; }
 
-        /* Case Studies (Success Stories) */
         .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); max-width: 1200px; margin: 0 auto 120px; gap: 30px; padding: 0 5%; }
         .case-card { background: #161b22; border-radius: 30px; padding: 45px; transition: 0.4s; border: 1px solid transparent; }
         .case-card:hover { border-color: var(--accent-blue); transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
@@ -108,132 +117,52 @@
         .case-card .tag { font-size: 0.8rem; background: rgba(0,122,255,0.15); color: var(--accent-blue); padding: 6px 14px; border-radius: 50px; font-weight: 700; text-transform: uppercase; }
         .case-card ul { padding-left: 20px; color: var(--text-gray); font-size: 0.95rem; line-height: 1.7; margin-top: 20px; }
 
-        /* Contact Form Section */
+        /* Form */
         .contact { padding: 140px 5%; background: rgba(0,0,0,0.4); }
-        .form-container { max-width: 700px; margin: 0 auto; background: var(--glass-bg); backdrop-filter: blur(30px); padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 100px rgba(0,0,0,0.5); }
-        input, select, textarea { width: 100%; padding: 18px; margin-bottom: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 16px; outline: none; transition: 0.3s; }
-        input:focus, select:focus, textarea:focus { border-color: var(--accent-blue); box-shadow: 0 0 20px rgba(0, 122, 255, 0.2); }
-        .submit-btn { width: 100%; padding: 20px; background: var(--accent-blue); border: none; border-radius: 16px; color: #fff; font-weight: 700; font-size: 18px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; }
-        .submit-btn:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0, 122, 255, 0.5); }
+        .form-container { max-width: 700px; margin: 0 auto; background: var(--glass-bg); backdrop-filter: blur(30px); padding: 60px; border-radius: 40px; border: 1px solid rgba(255,255,255,0.1); }
+        input, select, textarea { width: 100%; padding: 18px; margin-bottom: 25px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); color: #fff; font-size: 16px; outline: none; }
+        .submit-btn { width: 100%; padding: 20px; background: var(--accent-blue); border: none; border-radius: 16px; color: #fff; font-weight: 700; cursor: pointer; text-transform: uppercase; }
 
-        @media (max-width: 1024px) { .ecosystem-grid, .case-grid { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { h1 { font-size: 3.5rem; } .hero { flex-direction: column; text-align: center; } .earth-sphere { width: 320px; height: 320px; } .stats-grid { grid-template-columns: 1fr; } }
-        /* Footer Styles */
-        .site-footer {
-            background: #050810; /* 比主体背景更深的黑色 */
-            padding: 60px 5% 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 100px;
-        }
+        /* Footer */
+        .site-footer { background: #050810; padding: 80px 5% 40px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        .footer-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
+        .footer-links { display: flex; gap: 30px; }
+        .footer-links a { text-decoration: none; color: var(--text-gray); font-size: 13px; font-weight: 600; }
+        .social-icons { display: flex; gap: 15px; }
+        .social-icons a { width: 40px; height: 40px; background: rgba(255,255,255,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-gray); text-decoration: none; transition: 0.3s; }
+        .social-icons a:hover { background: var(--accent-blue); color: #fff; transform: translateY(-3px); }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.2); font-size: 12px; }
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .footer-slogan {
-            color: #94a3b8;
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .footer-links a {
-            text-decoration: none;
-            color: #94a3b8;
-            font-size: 13px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #fff;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-icons a {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%; /* 圆形图标 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #94a3b8;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            background: #007aff; /* Funjoy 品牌蓝 */
-            color: #fff;
-            transform: translateY(-3px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 12px;
-        }
-
-        /* 移动端适配 */
         @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
+            h1 { font-size: 3.5rem; }
+            .hero { flex-direction: column; text-align: center; }
+            .earth-sphere { width: 300px; height: 300px; }
+            .nav-links { display: none; }
+            .footer-container { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-<div class="page-wrapper">
+<div class="page-wrapper" id="home">
     <nav>
-        <div class="logo">FUNJOY <span>| Unleash Growth</span></div>
-        <div class="logo">
-            <img src="assets/logo.png" alt="Funjoy Logo" style="height: 40px; width: auto; vertical-align: middle;">
-            <span style="display: inline-block; vertical-align: middle; margin-top: 5px;">| Unleash Growth</span>
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Funjoy Logo" class="logo-img">
+            <span class="logo-divider">Unleash Growth</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">About Us</a>
+            <a href="#">Solutions</a>
+            <a href="#">Resources</a>
+            <a href="#contact" class="btn-nav">Contact Us</a>
         </div>
     </nav>
 
     <main class="hero">
         <div class="hero-content">
             <h1>Unleash Growth,<br>Go Global.</h1>
-            <p>Funjoy is a premium Programmatic Advertising Platform. We empower brands to scale internationally through innovative technology solutions and strategic partnerships.</p>
-            <a href="#contact" style="background: #fff; color: #000; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; transition: 0.3s;">Scale My Business Now</a>
+            <p>Funjoy is a premium Programmatic Advertising Platform. [cite_start]We empower brands to scale internationally through innovative technology solutions and strategic partnerships[cite: 3, 4].</p>
+            <a href="#contact" style="background: #fff; color: #000; padding: 20px 45px; border-radius: 50px; text-decoration: none; font-weight: 800;">Scale My Business Now</a>
         </div>
         <div class="earth-container">
             <div class="earth-sphere"></div>
@@ -241,10 +170,10 @@
     </main>
 
     <section class="stats-grid">
-        <div class="stat-card"><h2>5M+</h2><p>Monthly Clicks </p></div>
-        <div class="stat-card"><h2>5M+</h2><p>Monthly Orders </p></div>
-        <div class="stat-card"><h2>$3+</h2><p>Consistent ROI </p></div>
-        <div class="stat-card"><h2>50K+</h2><p>Monthly Sources [cite: 5]</p></div>
+        [cite_start]<div class="stat-card"><h2>5M+</h2><p>Monthly Clicks [cite: 8]</p></div>
+        [cite_start]<div class="stat-card"><h2>5M+</h2><p>Monthly Orders [cite: 10]</p></div>
+        [cite_start]<div class="stat-card"><h2>$3+</h2><p>Consistent ROI [cite: 16]</p></div>
+        [cite_start]<div class="stat-card"><h2>50K+</h2><p>Traffic Sources [cite: 5]</p></div>
     </section>
 </div>
 
@@ -265,17 +194,25 @@
     <h2 class="section-title">Our Global Media Ecosystem</h2>
     <div class="ecosystem-grid">
         <div class="eco-card">
-            <h3>Tier-1 SSP Partners </h3>
-            <p style="color: var(--text-gray); line-height: 1.6;">Direct programmatic integration with the world's most trusted supply-side platforms[cite: 47].</p>
+            <h3>Tier-1 SSP Partners</h3>
+            [cite_start]<p style="color: var(--text-gray); line-height: 1.6;">Direct programmatic integration with the world's most trusted supply-side platforms[cite: 47].</p>
             <div class="eco-list">
-                <span class="eco-tag">AppLovin </span><span class="eco-tag">Liftoff </span><span class="eco-tag">Verve Group </span><span class="eco-tag">OpenX </span><span class="eco-tag">Digital Turbine </span><span class="eco-tag">Smaato [cite: 60]</span>
+                [cite_start]<span class="eco-tag">AppLovin [cite: 49]</span>
+                [cite_start]<span class="eco-tag">Liftoff [cite: 48]</span>
+                [cite_start]<span class="eco-tag">Verve Group [cite: 51]</span>
+                [cite_start]<span class="eco-tag">OpenX [cite: 52]</span>
+                [cite_start]<span class="eco-tag">Smaato [cite: 60]</span>
             </div>
         </div>
         <div class="eco-card">
             <h3>Premier OEM Traffic</h3>
-            <p style="color: var(--text-gray); line-height: 1.6;">Exclusive access to system-level ad placements via leading global mobile manufacturers[cite: 61, 62].</p>
+            [cite_start]<p style="color: var(--text-gray); line-height: 1.6;">Exclusive access to system-level ad placements via leading global mobile manufacturers[cite: 61, 62].</p>
             <div class="eco-list">
-                <span class="eco-tag">Xiaomi </span><span class="eco-tag">Transsion </span><span class="eco-tag">OPPO </span><span class="eco-tag">vivo </span><span class="eco-tag">Samsung [cite: 204]</span>
+                [cite_start]<span class="eco-tag">Xiaomi [cite: 62]</span>
+                [cite_start]<span class="eco-tag">Transsion [cite: 61]</span>
+                [cite_start]<span class="eco-tag">OPPO [cite: 65]</span>
+                [cite_start]<span class="eco-tag">vivo [cite: 64]</span>
+                [cite_start]<span class="eco-tag">Samsung [cite: 204]</span>
             </div>
         </div>
     </div>
@@ -284,37 +221,37 @@
 <h2 class="section-title">Proven Global Success</h2>
 <section class="case-grid">
     <div class="case-card">
-        <span class="tag">E-commerce [cite: 242]</span>
-        <h3>Shopee (SEA) [cite: 240]</h3>
+        [cite_start]<span class="tag">E-commerce [cite: 242]</span>
+        [cite_start]<h3>Shopee (SEA) [cite: 240]</h3>
         <ul>
-            <li>150,000+ Monthly Orders </li>
-            <li>90%+ Completed Order Rate [cite: 266]</li>
-            <li>Stable growth in SEA markets [cite: 265]</li>
+            [cite_start]<li>150,000+ Monthly Orders [cite: 264]</li>
+            [cite_start]<li>90%+ Completed Order Rate [cite: 266]</li>
+            [cite_start]<li>Stable growth in SEA markets [cite: 265]</li>
         </ul>
     </div>
     <div class="case-card">
-        <span class="tag">Gaming [cite: 318]</span>
-        <h3>MLBB (US/TR) [cite: 313]</h3>
+        [cite_start]<span class="tag">Gaming [cite: 318]</span>
+        [cite_start]<h3>MLBB (US/TR) [cite: 313]</h3>
         <ul>
-            <li>20,000 new user installs monthly </li>
-            <li>Expanding DAU and ARPPU </li>
-            <li>ROI-focused OEM traffic [cite: 319, 322]</li>
+            [cite_start]<li>20,000 new user installs monthly [cite: 326]</li>
+            [cite_start]<li>Expanding DAU and ARPPU [cite: 326]</li>
+            [cite_start]<li>ROI-focused OEM traffic [cite: 319, 322]</li>
         </ul>
     </div>
     <div class="case-card">
-        <span class="tag">Travel [cite: 268]</span>
-        <h3>Agoda (Indonesia) [cite: 267]</h3>
+        [cite_start]<span class="tag">Travel [cite: 268]</span>
+        [cite_start]<h3>Agoda (Indonesia) [cite: 267]</h3>
         <ul>
-            <li>100+ steady bookings per month [cite: 280]</li>
-            <li>85%+ successful booking rate </li>
-            <li>High-quality completed conversions </li>
+            [cite_start]<li>100+ steady bookings per month [cite: 280]</li>
+            [cite_start]<li>85%+ successful booking rate [cite: 281]</li>
+            [cite_start]<li>High-quality completed conversions [cite: 281]</li>
         </ul>
     </div>
 </section>
 
 <section class="contact" id="contact">
     <div class="form-container">
-        <h2 style="text-align: center; margin-bottom: 35px; font-size: 2.5rem; letter-spacing: -1px;">Scale Your Brand Today</h2>
+        <h2 style="text-align: center; margin-bottom: 35px; font-size: 2.5rem;">Scale Your Brand Today</h2>
         <form onsubmit="event.preventDefault(); alert('Success! Our strategy experts will reach out within 24 hours.');">
             <input type="text" placeholder="Full Name" required>
             <input type="email" placeholder="Work Email" required>
@@ -324,7 +261,7 @@
                 <option>Publisher (Supply Partnership)</option>
                 <option>Agency Growth Partner</option>
             </select>
-            <textarea rows="4" placeholder="Briefly describe your marketing goals (e.g., Target GEOs, KPI targets...)"></textarea>
+            <textarea rows="4" placeholder="Briefly describe your marketing goals..."></textarea>
             <button type="submit" class="submit-btn">Inquire Now</button>
         </form>
     </div>
@@ -336,22 +273,19 @@
             <div class="footer-logo">FUNJOY</div>
             <p class="footer-slogan">Unleash Growth, Go Global.</p>
         </div>
-        
         <div class="footer-links">
             <a href="#home">HOME</a>
             <a href="#">SOLUTIONS</a>
             <a href="#">PRIVACY POLICY</a>
-            <a href="#">TERMS OF SERVICE</a>
+            <a href="#">TERMS</a>
         </div>
-
         <div class="social-icons">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
-    
     <div class="footer-bottom">
         <p>&copy; 2026 Funjoy Programmatic Advertising Platform. All Rights Reserved.</p>
     </div>
