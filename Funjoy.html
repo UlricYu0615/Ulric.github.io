@@ -38,9 +38,10 @@
         /* Logo 样式优化：反色处理让黑色 Logo 变白 */
         .logo-container { display: flex; align-items: center; gap: 12px; }
         .logo-img { 
-            height: 35px; 
+            height: 55px; 
             width: auto; 
             filter: invert(1); /* 关键：将黑色图标转为白色以适应深色背景 */
+            transition: transform 0.3s ease;
         }
         .logo-divider { 
             color: var(--text-gray); 
@@ -49,7 +50,27 @@
             padding-left: 12px;
             font-weight: 400;
         }
+        .footer-logo-img {
+            height: 45px; /* 页脚 Logo 建议比导航栏稍微小一点，显得精致 */
+            width: auto;
+            filter: invert(1); /* 同样应用反色处理，让黑色 Logo 变白 */
+            margin-bottom: 10px;
+            display: block; /* 确保它独占一行，方便下方 slogan 对齐 */
+        }
 
+        /* 调整页脚品牌区域的布局，确保居中或靠左对齐 */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* 如果你希望 Logo 靠左对齐 */
+        }
+
+        /* 移动端适配：页脚 Logo 居中 */
+        @media (max-width: 768px) {
+            .footer-brand {
+                align-items: center;
+            }
+        }
         .nav-links { display: flex; gap: 35px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-gray); font-size: 14px; transition: 0.3s; font-weight: 500; }
         .nav-links a:hover { color: var(--text-light); }
@@ -286,7 +307,9 @@
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-brand">
-            <div class="footer-logo">FUNJOY</div>
+            <div class="footer-logo">
+                <img src="assets/funjoy.png" alt="Funjoy Logo" class="footer-logo-img">
+            </div>
             <p class="footer-slogan">Unleash Growth, Go Global.</p>
         </div>
         <div class="footer-links">
